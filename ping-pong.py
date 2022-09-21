@@ -1,4 +1,4 @@
-import pygame
+import pygame as pg
 from helper_functions import background_setup, draw_rect, draw_circle
 
 with open("settings.json", "r") as file:
@@ -6,8 +6,8 @@ with open("settings.json", "r") as file:
 
 width, height = settings["width"], settings["height"]
 
-pygame.init()
-screen = pygame.display.set_mode([width, height])
+pg.init()
+screen = pg.display.set_mode([width, height])
 
 height -= 4
 
@@ -22,8 +22,8 @@ lives = settings["life"]
 running = True
 while running:
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
             running = False
 
     background_setup(screen, lives)
@@ -31,7 +31,7 @@ while running:
     if lives == 0:
         break
 
-    mouse_pos = pygame.mouse.get_pos()[0]
+    mouse_pos = pg.mouse.get_pos()[0]
     if mouse_pos <= settings["pad_length"]//2:
         draw_rect(screen, 0)
     elif settings["pad_length"]//2 < mouse_pos < width - settings["pad_length"]//2:
@@ -52,8 +52,8 @@ while running:
             lives -= 1
             __import__('time').sleep(2)
 
-game_over = pygame.image.load("game_over.png")
+game_over = pg.image.load("game_over.png")
 screen.blit(game_over, ((width-game_over.get_width())//2, (height-game_over.get_height()+4)//2))
-pygame.display.flip()
+pg.display.flip()
 __import__('time').sleep(1)
-pygame.quit()
+pg.quit()
