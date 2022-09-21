@@ -1,0 +1,11 @@
+{
+    "life" : 4,
+    "width" : 1024,
+    "height" : 700,
+    "pad_length" : 120,
+    "pong_radius" : 20,
+    "background_color" : "#000000",
+    "pad_color" :  "#00FF00",
+    "pong_color" : "#0000FF",
+    "line_color" : "#FF0000"
+}
